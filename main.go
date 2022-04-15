@@ -2,8 +2,8 @@ package main
 
 import (
 	"AlgorithmTest/JianZhi_Offer/jz_general"
-	"AlgorithmTest/general"
-	"AlgorithmTest/simple"
+	"AlgorithmTest/LeedCode/general"
+	"AlgorithmTest/LeedCode/simple"
 	"fmt"
 )
 
