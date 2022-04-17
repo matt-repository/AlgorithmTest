@@ -1,10 +1,11 @@
 package main
 
 import (
-	"AlgorithmTest/JianZhi_Offer/jz_general"
 	"AlgorithmTest/LeedCode/general"
 	"AlgorithmTest/LeedCode/simple"
 	"fmt"
+	"strconv"
+	"strings"
 )
 
 func main() {
@@ -101,42 +102,37 @@ func main() {
 	//&general.TreeNode{Val: 3,Left:
 	//&general.TreeNode{Val: 9},
 	//	Right: &general.TreeNode{Val: 20,Left: &general.TreeNode{Val: 15},Right: &general.TreeNode{Val: 7}}}
-	fmt.Println( exchange([]int{1,2,3,4}))
-	data := jz_general.LevelOrder(&jz_general.TreeNode{
-		Val: 3,
-		Left: &jz_general.TreeNode{
-			Val: 9,
-		},
-		Right: &jz_general.TreeNode{
-			Val: 20,
-			Left: &jz_general.TreeNode{
-				Val: 15,
-			},
-			Right: &jz_general.TreeNode{
-				Val: 7,
-			},
-		},
-	})
-	fmt.Println(data)
-
-
+	//fmt.Println( exchange([]int{1,2,3,4}))
+	//data := jz_general.LevelOrder(&jz_general.TreeNode{
+	//	Val: 3,
+	//	Left: &jz_general.TreeNode{
+	//		Val: 9,
+	//	},
+	//	Right: &jz_general.TreeNode{
+	//		Val: 20,
+	//		Left: &jz_general.TreeNode{
+	//			Val: 15,
+	//		},
+	//		Right: &jz_general.TreeNode{
+	//			Val: 7,
+	//		},
+	//	},
+	//})
+	//fmt.Println(data)
+	fmt.Println((755204270 + 965550172) % 1000000007)
 }
 
-
-func exchange(nums []int) []int {
-
-	i,j:=0,len(nums)-1
-
-	for i<j{
-		if nums[i]%2==0 &&nums[j]%2==1{
-			nums[i],nums[j]=nums[j],nums[i]
-		}
-		if nums[i]%2==1{
-			i++
-		}
-		if nums[j]%2==0{
-			j--
-		}
-	}
-	return nums
+func Test() {
+	sb := &strings.Builder{}
+	sb.WriteString(string(1))
+	sb.WriteByte(',')
+	sb.WriteString(strconv.Itoa(2))
+	sb.WriteByte(',')
+	sb.WriteString("null,")
+	sb.WriteString(strconv.Itoa(1))
+	sb.WriteByte(',')
+	sb.WriteString(strconv.Itoa(2))
+	sb.WriteByte(',')
+	fmt.Println(sb.String())
+	strconv.Atoi("")
 }
