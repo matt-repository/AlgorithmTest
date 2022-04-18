@@ -120,9 +120,11 @@ func main() {
 	//})
 	//fmt.Println(data)
 	fmt.Println((755204270 + 965550172) % 1000000007)
+
 }
 
 func Test() {
+
 	sb := &strings.Builder{}
 	sb.WriteString(string(1))
 	sb.WriteByte(',')
@@ -135,4 +137,5 @@ func Test() {
 	sb.WriteByte(',')
 	fmt.Println(sb.String())
 	strconv.Atoi("")
+
 }
