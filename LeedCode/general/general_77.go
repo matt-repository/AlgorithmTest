@@ -1,38 +1,44 @@
 package general
 
+import "fmt"
+
 //组合
 //
 //给定两个整数 n 和 k，返回范围 [1, n] 中所有可能的 k 个数的组合。
 //
 //你可以按 任何顺序 返回答案。
 
-func combine(n int, k int) [][]int {
+func Combine(n int, k int) [][]int {
+	result := [][]int{}
 	if k > n {
-		return nil
+		return result
 	}
-	result := &Result{Data: [][]int{}}
-	queue := []int{}
-	dfs_77(n, k, 1, queue, result)
-	return result.Data
+	temp := &Temp_77{
+		Result: [][]int{},
+		Queue:  []int{},
+	}
+	dfs_77(n, k, 1, temp)
+	return temp.Result
 }
 
-func dfs_77(n int, k int, begin int, queue []int, result *Result) {
-	if len(queue) == k {
-		temp := []int{}
-		for i := 0; i < len(queue); i++ {
-			temp = append(temp, queue[i])
-		}
-		result.Data = append(result.Data, temp)
+func dfs_77(n int, k int, begin int, temp *Temp_77) {
+	if len(temp.Queue) == k {
+		temp_ := make([]int, len(temp.Queue))
+		copy(temp_, temp.Queue)
+		temp.Result = append(temp.Result, temp_)
 		return
 	}
 
-	for i := begin; i <= n-(k-len(queue))+1; i++ {
-		queue = append(queue, i)
-		dfs_77(n, k, i+1, queue, result)
-		queue = queue[:len(queue)-1]
+	for i := begin; i <= n-(k-len(temp.Queue))+1; i++ {
+		temp.Queue = append(temp.Queue, i)
+		fmt.Println("递归之前:", temp.Queue)
+		dfs_77(n, k, i+1, temp)
+		fmt.Println("递归之后:", temp.Queue)
+		temp.Queue = temp.Queue[:len(temp.Queue)-1]
 	}
 }
 
-type Result struct {
-	Data [][]int
+type Temp_77 struct {
+	Result [][]int
+	Queue  []int
 }
