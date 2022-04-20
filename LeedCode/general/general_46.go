@@ -29,6 +29,7 @@ func dfs_46(n, first int, temp *Temp_46) {
 		temp.Queue[first], temp.Queue[i] = temp.Queue[i], temp.Queue[first]
 		fmt.Println("递归之后:", temp.Queue)
 	}
+
 }
 
 type Temp_46 struct {

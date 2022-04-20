@@ -122,6 +122,7 @@ func main() {
 	fmt.Println((755204270 + 965550172) % 1000000007)
 	//general.Combine(3,2)
 	general.Permute([]int{1, 2, 3})
+	//general.MinimumTotal([][]int{{-1},{2,3},{1,-1,-3}})
 }
 
 func Test() {
