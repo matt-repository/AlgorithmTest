@@ -1,15 +1,17 @@
 package main
 
 import (
+	"AlgorithmTest/LeedCode/difficult"
 	"AlgorithmTest/LeedCode/general"
 	"AlgorithmTest/LeedCode/simple"
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func main() {
-
+	Test()
 	//a:=[6]int{-1,0,3,5,9,11}
 	//b:=[5]int{1,2,3,4,5}
 	//c:=[1]int{1}
@@ -124,6 +126,9 @@ func main() {
 	//general.Combine(3,2)
 	general.Permute([]int{1, 2, 3})
 	//general.MinimumTotal([][]int{{-1},{2,3},{1,-1,-3}})
+
+	fmt.Println(time.Now())
+	fmt.Println(difficult.SolveNQueens(1))
 }
 
 func Test() {
