@@ -1,6 +1,7 @@
 package main
 
 import (
+	"AlgorithmTest/JianZhi_Offer/jz_general"
 	"AlgorithmTest/LeedCode/difficult"
 	"AlgorithmTest/LeedCode/general"
 	"AlgorithmTest/LeedCode/simple"
@@ -132,7 +133,7 @@ func main() {
 }
 
 func Test() {
-
+	fmt.Println(jz_general.NthUglyNumber(1))
 	sb := &strings.Builder{}
 	sb.WriteString(string(1))
 	sb.WriteByte(',')
