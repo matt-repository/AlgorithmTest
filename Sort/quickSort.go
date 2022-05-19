@@ -3,43 +3,32 @@ package Sort
 //快速排序
 
 func quickSort(arr []int) []int {
-	sort(arr, 0, len(arr)-1)
+	return _quickSort(arr, 0, len(arr)-1)
+}
+
+func _quickSort(arr []int, left, right int) []int {
+	if left < right {
+		partitionIndex := partition(arr, left, right)
+		_quickSort(arr, left, partitionIndex-1)
+		_quickSort(arr, partitionIndex+1, right)
+	}
 	return arr
 }
 
-func sort(arr []int, low int, high int) {
-	if high <= low {
-		return
+func partition(arr []int, left, right int) int {
+	pivot := left
+	index := pivot + 1
+
+	for i := index; i <= right; i++ {
+		if arr[i] < arr[pivot] {
+			swap(arr, i, index)
+			index += 1
+		}
 	}
-	j := partition(arr, low, high)
-	sort(arr, low, j-1)
-	sort(arr, j+1, high)
+	swap(arr, pivot, index-1)
+	return index - 1
 }
-func partition(arr []int, low int, high int) int {
-	i, j := low+1, high
-	for true {
-		for arr[i] < arr[low] {
-			i++
-			if i == high {
-				break
-			}
-		}
-		for arr[low] < arr[j] {
-			j--
-			if j == low {
-				break
-			}
-		}
-		if i >= j {
-			break
-		}
-		exch(arr, i, j)
-	}
-	exch(arr, low, j)
-	return j
-}
-func exch(arr []int, a int, b int) {
-	temp := arr[a]
-	arr[a] = arr[b]
-	arr[b] = temp
+
+func swap(arr []int, i, j int) {
+	arr[i], arr[j] = arr[j], arr[i]
 }
