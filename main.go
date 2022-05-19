@@ -12,6 +12,8 @@ import (
 )
 
 func main() {
+
+	fmt.Println(jz_general.SingleNumber([]int{3, 4, 3, 3}))
 	Test()
 	//a:=[6]int{-1,0,3,5,9,11}
 	//b:=[5]int{1,2,3,4,5}
@@ -133,6 +135,8 @@ func main() {
 }
 
 func Test() {
+	i := 1
+	i >>= 1
 	fmt.Println(jz_general.NthUglyNumber(1))
 	sb := &strings.Builder{}
 	sb.WriteString(string(1))
