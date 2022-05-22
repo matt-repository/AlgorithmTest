@@ -1,6 +1,7 @@
 package main
 
 import (
+	"AlgorithmTest/JianZhi_Offer/jz_difficult"
 	"AlgorithmTest/JianZhi_Offer/jz_general"
 	"AlgorithmTest/LeedCode/difficult"
 	"AlgorithmTest/LeedCode/general"
@@ -12,7 +13,7 @@ import (
 )
 
 func main() {
-
+	fmt.Println(jz_difficult.ReversePairs([]int{7,5,6,4}))
 	fmt.Println(jz_general.SingleNumber([]int{3, 4, 3, 3}))
 	Test()
 	//a:=[6]int{-1,0,3,5,9,11}
@@ -139,7 +140,7 @@ func Test() {
 	i >>= 1
 	fmt.Println(jz_general.NthUglyNumber(1))
 	sb := &strings.Builder{}
-	sb.WriteString(string(1))
+	sb.WriteString(strconv.Itoa(1))
 	sb.WriteByte(',')
 	sb.WriteString(strconv.Itoa(2))
 	sb.WriteByte(',')
