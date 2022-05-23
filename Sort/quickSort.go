@@ -2,7 +2,7 @@ package Sort
 
 //快速排序
 
-func quick(nums []int) []int {
+func Quick(nums []int) []int {
 
 	return _quick(nums, 0, len(nums)-1)
 
@@ -11,6 +11,7 @@ func quick(nums []int) []int {
 func _quick(nums []int, left, right int) []int {
 	if left < right {
 		index := partition(nums, left, right)
+		//切片是值传递，但是 里面的数组是 指针地址，所以相当于修改的是同一片连续的内存
 		_quick(nums, left, index-1)
 		_quick(nums, index+1, right)
 	}
@@ -22,6 +23,7 @@ func partition(nums []int, left, right int) int {
 	index := left + 1
 
 	for i := index + 1; i <= right; i++ {
+
 		if nums[i] > nums[pivot] {
 			nums[i], nums[index] = nums[index], nums[i]
 			index++

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"AlgorithmTest/JianZhi_Offer/jz_difficult"
 	"AlgorithmTest/JianZhi_Offer/jz_general"
 	"AlgorithmTest/LeedCode/difficult"
 	"AlgorithmTest/LeedCode/general"
 	"AlgorithmTest/LeedCode/simple"
+	"AlgorithmTest/Sort"
 	"fmt"
 	"strconv"
 	"strings"
@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	fmt.Println(jz_difficult.ReversePairs([]int{7,5,6,4}))
+	fmt.Println(Sort.Quick([]int{7, 5, 6, 4}))
 	fmt.Println(jz_general.SingleNumber([]int{3, 4, 3, 3}))
 	Test()
 	//a:=[6]int{-1,0,3,5,9,11}
