@@ -1,6 +1,7 @@
 package main
 
 import (
+	"AlgorithmTest/JianZhi_Offer/jz_difficult"
 	"AlgorithmTest/JianZhi_Offer/jz_general"
 	"AlgorithmTest/LeedCode/difficult"
 	"AlgorithmTest/LeedCode/general"
@@ -13,6 +14,7 @@ import (
 )
 
 func main() {
+	jz_difficult.IsMatch("ab", "ab*")
 	fmt.Println(Sort.Quick([]int{7, 5, 6, 4}))
 	fmt.Println(jz_general.SingleNumber([]int{3, 4, 3, 3}))
 	Test()
