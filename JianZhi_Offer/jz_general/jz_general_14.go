@@ -1,6 +1,6 @@
 package jz_general
 
-//剪绳子Ⅱ
+// CuttingRope 剪绳子Ⅱ 数学方法
 
 func CuttingRope(n int) int {
 	if n <= 3 {
@@ -24,4 +24,25 @@ func CuttingRope(n int) int {
 	}
 	// if b== 2, 3 * 2
 	return rem * 6 % p
+}
+
+// CuttingRope1 动态规划
+func CuttingRope1(n int) int {
+	max := func(x, y int) int {
+		if x > y {
+			return x
+		} else {
+			return y
+		}
+	}
+	dp := make([]int, n)
+	dp[1] = 1
+	for i := 2; i <= n; i++ {
+		cur := 0
+		for j := 1; j < i; j++ {
+			cur = max(j*(i-j), dp[j]*(i-j))
+		}
+		dp[i] = cur
+	}
+	return dp[n]
 }

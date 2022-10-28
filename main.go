@@ -1,23 +1,37 @@
 package main
 
+import "C"
 import (
-	"AlgorithmTest/JianZhi_Offer/jz_difficult"
 	"AlgorithmTest/JianZhi_Offer/jz_general"
 	"AlgorithmTest/LeedCode/difficult"
 	"AlgorithmTest/LeedCode/general"
 	"AlgorithmTest/LeedCode/simple"
 	"AlgorithmTest/Sort"
 	"fmt"
+	"os"
 	"strconv"
 	"strings"
 	"time"
 )
 
 func main() {
-	jz_difficult.IsMatch("ab", "ab*")
+	Test()
+	const (
+		B = 1 << (10 * iota)
+		KiB
+		MiB
+		GiB
+		TiB
+		PiB
+		EiB
+	)
+	ssss := 1 << (10 * 1)
+	ssss = 1 << (10 * 2)
+	fmt.Println(ssss)
+	fmt.Println(MiB)
 	fmt.Println(Sort.Quick([]int{7, 5, 6, 4}))
 	fmt.Println(jz_general.SingleNumber([]int{3, 4, 3, 3}))
-	Test()
+
 	//a:=[6]int{-1,0,3,5,9,11}
 	//b:=[5]int{1,2,3,4,5}
 	//c:=[1]int{1}
@@ -138,6 +152,7 @@ func main() {
 }
 
 func Test() {
+	SetOption(1)
 	i := 1
 	i >>= 1
 	fmt.Println(jz_general.NthUglyNumber(1))
@@ -153,4 +168,20 @@ func Test() {
 	sb.WriteByte(',')
 	fmt.Println(sb.String())
 	strconv.Atoi("")
+}
+
+// SetOption 运行时判断类型
+func SetOption(param interface{}) {
+	test, error := os.Open("1.txt")
+	if error != nil {
+
+	}
+
+	fmt.Fprintf(test, "111")
+	switch v := param.(type) {
+	default:
+		fmt.Printf("unexpected type %T", v)
+	case uint64:
+	case string:
+	}
 }
