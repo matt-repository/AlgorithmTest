@@ -2,9 +2,9 @@ package jz_difficult
 
 import "container/heap"
 
-//数据流中的中位数
+// MedianFinder 数据流中的中位数
 type MedianFinder struct {
-	large *IntHeap //这里的large 是小顶堆  是 如：6，7，8
+	large *IntHeap //这里的large 是大顶堆  是 如：6，7，8
 	small *IntHeap //这里的small 是小顶堆  是 如 ：-5 -4，-3
 }
 
@@ -26,7 +26,7 @@ func (h *IntHeap) Pop() interface{} {
 	return value
 }
 
-/** initialize your data structure here. */
+// Constructor /** initialize your data structure here. */
 func Constructor() MedianFinder {
 	a := &IntHeap{}
 	b := &IntHeap{}
