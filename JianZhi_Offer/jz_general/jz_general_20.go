@@ -26,6 +26,7 @@ func isNumber(s string) bool {
 	return result && len(sStr.S) == 0
 }
 
+// 数字
 func isUnInt(s *sStruct) bool {
 	result := false
 	for len(s.S) > 0 && s.S[0] >= '0' && s.S[0] <= '9' {
@@ -35,6 +36,7 @@ func isUnInt(s *sStruct) bool {
 	return result
 }
 
+// 整数
 func isInt(s *sStruct) bool {
 	if len(s.S) > 0 && (s.S[0] == '+' || s.S[0] == '-') {
 		s.S = s.S[1:]

@@ -14,13 +14,13 @@ func Constructor() CQueue {
 	}
 }
 
-//在队列尾部插入整数
+// 在队列尾部插入整数
 func (this *CQueue) AppendTail(value int) {
 
 	this.Stack1 = append(this.Stack1, value)
 }
 
-//在队列头部删除整数,若队列中没有元素，deleteHead 操作返回 -1
+// 在队列头部删除整数,若队列中没有元素，deleteHead 操作返回 -1
 func (this *CQueue) DeleteHead() int {
 
 	if len(this.Stack1) == 0 {
