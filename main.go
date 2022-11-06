@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	jz_general.LengthOfLongestSubstring("abba")
+	jz_general.NthUglyNumber(10)
 	Test()
 	const (
 		B = 1 << (10 * iota)
