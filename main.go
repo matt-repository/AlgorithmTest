@@ -1,6 +1,5 @@
 package main
 
-import "C"
 import (
 	"AlgorithmTest/JianZhi_Offer/jz_general"
 	"AlgorithmTest/LeedCode/difficult"
@@ -15,7 +14,7 @@ import (
 )
 
 func main() {
-	general.LengthOfLongestSubstring("pwwkew")
+	jz_general.LengthOfLongestSubstring("abba")
 	Test()
 	const (
 		B = 1 << (10 * iota)
