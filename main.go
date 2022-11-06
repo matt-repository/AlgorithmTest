@@ -15,6 +15,7 @@ import (
 )
 
 func main() {
+	general.LengthOfLongestSubstring("pwwkew")
 	Test()
 	const (
 		B = 1 << (10 * iota)
