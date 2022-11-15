@@ -14,8 +14,11 @@ import (
 )
 
 func main() {
+	nums := Sort.Quick([]int{100, 1, 4, 1, 3, 1, 8, 9})
+
+	fmt.Println(nums)
 	jz_general.NthUglyNumber(10)
-	Test()
+	Test1()
 	const (
 		B = 1 << (10 * iota)
 		KiB
@@ -151,7 +154,7 @@ func main() {
 	fmt.Println(difficult.SolveNQueens(1))
 }
 
-func Test() {
+func Test1() {
 	SetOption(1)
 	i := 1
 	i >>= 1
