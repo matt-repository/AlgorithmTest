@@ -6,6 +6,7 @@ import (
 	"AlgorithmTest/LeedCode/general"
 	"AlgorithmTest/LeedCode/simple"
 	"AlgorithmTest/Sort"
+	"AlgorithmTest/Test"
 	"fmt"
 	"os"
 	"strconv"
@@ -14,6 +15,7 @@ import (
 )
 
 func main() {
+	Test.Test()
 	nums := Sort.Quick([]int{100, 1, 4, 1, 3, 1, 8, 9})
 
 	fmt.Println(nums)

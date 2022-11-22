@@ -15,7 +15,7 @@ func NthUglyNumber(n int) int {
 		dataA_, dataB_, dataC_ := data[dataA]*2, data[dataB]*3, data[dataC]*5
 		min := isMin(dataA_, dataB_, dataC_)
 		data = append(data, min)
-		if min == dataA_ { // 以下都是if 因为这样会排除掉相同的数据
+		if min == dataA_ { // 以下都是if 因为这样会排除掉相同的数据  并且相同的只有两个，因为是2 3 5相乘的。并且相邻。
 			dataA++
 		}
 		if min == dataB_ {
