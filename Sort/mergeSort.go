@@ -16,7 +16,7 @@ func merge(left []int, right []int) []int {
 	result := make([]int, 0)
 
 	for len(left) != 0 && len(right) != 0 {
-		if left[0] < right[0] {
+		if left[0] <= right[0] {
 			result = append(result, left[0])
 			left = left[1:]
 		} else {
