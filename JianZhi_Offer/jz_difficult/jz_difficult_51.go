@@ -1,51 +1,54 @@
 package jz_difficult
 
-//数组中的逆序对
-
+// ReversePairs 数组中的逆序对
 func ReversePairs(nums []int) int {
-	mergeSort(nums)
+	count = 0 //记住，leed Code 的上面要初始化，不然会出错，
+	mergeSort(nums, 0, len(nums)-1, make([]int, len(nums)))
 	return count
 }
 
-var data [][2]int
 var count = 0
 
-func mergeSort(nums []int) []int {
-	if len(nums) < 2 {
-		return nums
+func mergeSort(nums []int, left, right int, temp []int) {
+	if left < right {
+		//mid := right - (right-left)>>1  上面这个有问题，当 right=1 left=0 会无限循环下去会出错
+		mid := left + (right-left)/2
+		mergeSort(nums, left, mid, temp)
+		mergeSort(nums, mid+1, right, temp)
+		mergeCount(nums, left, mid, right, temp)
 	}
-	mid := len(nums) >> 1
-	return mergeCount(mergeSort(nums[:mid]), mergeSort(nums[mid:])) //这里是return 有返回值
-	//mergeCount(mergeSort(nums[:mid]), mergeSort(nums[mid:]))  写成这样，错了，看了半天没看出来，日
-	//return nums
-
 }
 
-func mergeCount(left, right []int) []int {
-	result := make([]int, len(left)+len(right))
+func mergeCount(nums []int, left, mid, right int, temp []int) {
+	i := left
+	j := mid + 1
 	t := 0
-
-	for len(left) > 0 && len(right) > 0 {
-		if left[0] <= right[0] {
-			result[t] = left[0]
-			left = left[1:]
+	for i <= mid && j <= right {
+		if nums[i] <= nums[j] {
+			temp[t] = nums[i]
+			i++
 			t++
 		} else {
-			count += len(left)
-			result[t] = right[0]
-			right = right[1:]
+			count += mid - i + 1
+			temp[t] = nums[j]
+			j++
 			t++
 		}
 	}
-	for len(left) > 0 {
-		result[t] = left[0]
-		left = left[1:]
+	for i <= mid {
+		temp[t] = nums[i]
+		i++
 		t++
 	}
-	for len(right) > 0 {
-		result[t] = right[0]
-		right = right[1:]
+	for j <= right {
+		temp[t] = nums[j]
+		j++
 		t++
 	}
-	return result
+	t = 0
+	for left <= right {
+		nums[left] = temp[t]
+		left++
+		t++
+	}
 }

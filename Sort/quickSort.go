@@ -23,7 +23,7 @@ func partition(nums []int, left, right int) int {
 	index := left + 1
 
 	for i := index + 1; i <= right; i++ {
-		if nums[i] <= nums[pivot] {
+		if nums[i] < nums[pivot] { // 相等 换与不换都一样， 所以可以不换
 			nums[i], nums[index] = nums[index], nums[i]
 			index++
 		}

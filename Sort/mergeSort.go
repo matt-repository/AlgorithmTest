@@ -2,36 +2,47 @@ package Sort
 
 //归并排序
 
-func mergeSort(nums []int) []int {
-	if len(nums) < 2 {
-		return nums
-	}
-	mid := len(nums) / 2
-
-	return merge(mergeSort(nums[:mid]), mergeSort(nums[mid:]))
-
+func MergeSort(nums []int) []int {
+	_mergeSort(nums, 0, len(nums)-1, make([]int, len(nums)))
+	return nums
 }
 
-func merge(left []int, right []int) []int {
-	result := make([]int, 0)
+func _mergeSort(nums []int, left, right int, temp []int) {
+	if left < right {
+		mid := right + (right-left)/2
+		_mergeSort(nums, left, mid, temp)
+		_mergeSort(nums, mid+1, right, temp)
+		merge(nums, left, mid, right, temp) //合并
+	}
+}
 
-	for len(left) != 0 && len(right) != 0 {
-		if left[0] <= right[0] {
-			result = append(result, left[0])
-			left = left[1:]
+func merge(nums []int, left, mid, right int, temp []int) {
+	i := left
+	j := mid + 1
+	t := 0
+	for i <= mid && j <= right {
+		if nums[i] <= nums[j] {
+			temp[t] = nums[i]
+			t++
+			i++
 		} else {
-			result = append(result, right[0])
-			right = right[1:]
+			temp[t] = nums[j]
+			t++
+			j++
 		}
 	}
-	for len(left) != 0 {
-		result = append(result, left[0])
-		left = left[1:]
+	for i <= mid {
+		temp[t] = nums[i]
+		t++
+		i++
 	}
-	for len(right) != 0 {
-		result = append(result, right[0])
-		right = right[1:]
+	for j <= right {
+		temp[t] = nums[j]
+		t++
+		j++
 	}
-	return result
-
+	t = 0
+	for left <= right {
+		nums[left] = temp[t]
+	}
 }
