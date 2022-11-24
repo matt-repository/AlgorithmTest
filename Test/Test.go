@@ -6,6 +6,6 @@ import (
 )
 
 func Test() {
-	a := jz_general.SingleNumber1([]int{1, 2, 10, 4, 1, 4, 3, 3})
+	a := jz_general.SingleNumber2([]int{3, 3, 3, 4, 1, 1, 1, 5, 5, 5})
 	fmt.Println(a)
 }
