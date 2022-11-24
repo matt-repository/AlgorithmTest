@@ -4,19 +4,35 @@ import "strings"
 
 // ||左旋字符串
 
-func reverseLeftWords(s string, n int) string {
-	result := ""
-	length := len(s)
-	if length == 0 {
-		return s
-	}
-	n_ := n % length
+func ReverseLeftWords(s string, n int) string {
+	_n := n % len(s)
+	data := []byte(s)
+	reverse(data, 0, _n-1)
+	reverse(data, _n, len(s)-1)
+	reverse(data, 0, len(data)-1)
+	return string(data)
+}
 
-	for i := n_; i < length+n_; i++ {
-		result += string(s[i%length])
+func reverse(data []byte, left, right int) {
+	if left < right {
+		data[left], data[right] = data[right], data[left]
+		left++
+		right--
 	}
+}
 
-	return result
+// 自己想的，时间复杂度低，但是空间复杂度高
+func reverseLeftWords1(s string, n int) string {
+	_n := n % len(s)
+	res := make([]byte, 0)
+
+	for i := _n; i < len(s); i++ {
+		res = append(res, s[i])
+	}
+	for i := 0; i < _n; i++ {
+		res = append(res, s[i])
+	}
+	return string(res)
 
 }
 
