@@ -28,6 +28,7 @@ func (h *IntHeap) Pop() interface{} {
 
 // This example inserts several ints into an IntHeap, checks the minimum,
 // and removes them in order of priority.
+
 func HeapTest() {
 	h := &IntHeap{2, 1, 5}
 	heap.Init(h)

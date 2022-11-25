@@ -3,21 +3,22 @@ package Test
 func Test() {
 
 }
-func dicesProbability(k int) []float64 {
-	res := make([]float64, 6)
-	for i := 0; i < 6; i++ {
-		res[i] = 1 / 6
+func constructArr(a []int) []int {
+
+	if len(a) == 0 {
+		return []int{}
 	}
-	for n := 2; n <= k; n++ {
-		temp := make([]float64, 5*n+1)
-		for i := 0; i < len(res); i++ {
-			for j := 0; j < 6; j++ {
-				temp[i+j] += res[i] / 6
-			}
-		}
-		res := make([]float64, 5*n+1)
-		copy(res, temp)
+	res := make([]int, len(a))
+
+	res[0] = 1
+	for i := 1; i < len(a); i++ {
+		res[i] = res[i-1] * a[i-1]
+	}
+
+	temp := 1
+	for i := len(a) - 1; i >= 0; i-- {
+		res[i] *= temp
+		temp *= a[i]
 	}
 	return res
-
 }

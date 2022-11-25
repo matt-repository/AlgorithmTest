@@ -6,6 +6,7 @@ package jz_general
 //不能使用除法。
 
 // 直观蠢办法 会很耗时
+
 func ConstructArr(a []int) []int {
 	result := make([]int, len(a))
 	for i := 0; i < len(a); i++ {
@@ -22,18 +23,22 @@ func ConstructArr(a []int) []int {
 
 //时间复杂度 O(n) 空间O(1)
 //当前值为 左右两边的乘积的方法
-func ConstructArr1(a []int) []int {
 
-	result := make([]int, len(a))
-	result[0] = 1
-	for i := 1; i < len(a); i++ {
-		result[i] = a[i-1] * result[i-1]
+func ConstructArr1(a []int) []int {
+	if len(a) == 0 {
+		return []int{}
 	}
+	res := make([]int, len(a))
+
+	res[0] = 1
+	for i := 1; i < len(a); i++ {
+		res[i] = res[i-1] * a[i-1]
+	}
+
 	temp := 1
 	for i := len(a) - 1; i >= 0; i-- {
-		result[i] = result[i] * temp
-
+		res[i] *= temp
 		temp *= a[i]
 	}
-	return result
+	return res
 }

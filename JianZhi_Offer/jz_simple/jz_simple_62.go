@@ -1,13 +1,16 @@
 package jz_simple
 
-//环形链表解法,一次一次的进去，会浪费很多时间
+// 圆圈中最后剩下的数字(一个)
+
+// 环形链表解法,一次一次的进去，会超时
+
 func lastRemaining(n int, m int) int {
-	data := &TempList{Value: 0}
+	data := &ListNode{Val: 0}
 
 	temp := data
 	for i := 1; i < n; i++ {
-		temp.Next = &TempList{
-			Value: i,
+		temp.Next = &ListNode{
+			Val: i,
 		}
 		temp = temp.Next
 	}
@@ -20,10 +23,19 @@ func lastRemaining(n int, m int) int {
 		temp.Next = temp.Next.Next
 
 	}
-	return temp.Value
+	return temp.Val
 }
 
-type TempList struct {
-	Value int
-	Next  *TempList
+//f(n,m)=(f(n-1,m)+m)%n  约瑟夫环的公式，什么原理真的看不懂
+// 根据这个数学公式
+//
+
+func lastRemaining1(n int, m int) int {
+
+	last := 0
+
+	for i := 2; i <= n; i++ {
+		last = (last + m) % i
+	}
+	return last
 }
