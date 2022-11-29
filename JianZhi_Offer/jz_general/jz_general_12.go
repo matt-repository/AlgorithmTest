@@ -17,7 +17,7 @@ func dfs_12(board [][]byte, word string, i, j, k int) bool {
 	if i < 0 || i >= len(board) || j < 0 || j >= len(board[0]) || k >= len(word) {
 		return false
 	}
-	if board[i][j] != word[k] {
+	if board[i][j] != word[k] { //记住 比对的是 每一个，不能只比对最后一个
 		return false
 	}
 	if k == len(word)-1 {
