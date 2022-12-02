@@ -22,7 +22,7 @@ func dfs_34(first *TreeNode, tempResult TempResult, target int) {
 		}()
 		if first.Left == nil && first.Right == nil && tempResult.Num == target {
 			temp := make([]int, len(tempResult.Queue))
-			copy(temp, tempResult.Queue)
+			copy(temp, tempResult.Queue) //这里记得一定要 temp 再添加，不然一直是同一个
 			tempResult.Result = append(tempResult.Result, temp)
 		} else {
 			dfs_34(first.Left, tempResult, target)
