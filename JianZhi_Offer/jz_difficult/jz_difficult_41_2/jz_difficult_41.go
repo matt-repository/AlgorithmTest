@@ -15,7 +15,7 @@ type MedianFinder struct {
 
 type hp struct{ sort.IntSlice }
 
-func (h *hp) Push(v interface{}) { h.IntSlice = append(h.IntSlice, v.(int)) }
+func (h *hp) Push(v interface{}) { h.IntSlice = append(h.IntSlice, v.(int)) } //这里不是 push，而是最原始的 操作
 func (h *hp) Pop() interface{} {
 	a := h.IntSlice
 	v := a[len(a)-1]
@@ -28,7 +28,7 @@ func Constructor() MedianFinder {
 
 func (mf *MedianFinder) AddNum(num int) {
 	minQ, maxQ := &mf.queMin, &mf.queMax
-	if minQ.Len() == 0 || num <= -minQ.IntSlice[0] {
+	if minQ.Len() == 0 || num <= -minQ.IntSlice[0] { // 这里是负数，注意
 		heap.Push(minQ, -num)
 		if maxQ.Len()+1 < minQ.Len() {
 			heap.Push(maxQ, -heap.Pop(minQ).(int))

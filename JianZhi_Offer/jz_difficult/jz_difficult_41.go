@@ -39,16 +39,17 @@ func Constructor() MedianFinder {
 }
 
 func (this *MedianFinder) AddNum(num int) {
-	if this.large.Len() == 0 || (*this.large)[0] < num { //(*this.large) large 是一个指针
-		heap.Push(this.large, num)
-	} else {
+	if len(*this.small) == 0 || num <= -(*this.small)[0] {
 		heap.Push(this.small, -num)
-	}
 
-	if this.large.Len() > this.small.Len()+1 {
-		heap.Push(this.small, -heap.Pop(this.large).(int))
-	} else if this.small.Len() > this.large.Len()+1 {
-		heap.Push(this.large, -heap.Pop(this.small).(int))
+		if len(*this.small) > len(*this.large)+1 {
+			heap.Push(this.large, -heap.Pop(this.small).(int))
+		}
+	} else {
+		heap.Push(this.large, num)
+		if len(*this.small) < len(*this.large) {
+			heap.Push(this.small, -heap.Pop(this.large).(int))
+		}
 	}
 }
 

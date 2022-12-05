@@ -44,3 +44,13 @@ func isMin(a, b, c int) int {
 	}
 
 }
+
+func min1(a, b, c int) int {
+	if a <= b && a <= c { // 这里必须写等于号 ，不然是有问题的
+		return a
+	} else if b <= a && b <= c { // 这里必须写等于号 ，不然是有问题的
+		return b
+	} else {
+		return c
+	}
+}
