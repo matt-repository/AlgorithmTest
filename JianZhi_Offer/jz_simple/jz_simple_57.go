@@ -33,7 +33,6 @@ func FindContinuousSequence(target int) [][]int {
 	res := make([][]int, 0)
 	left := 1
 	right := 2
-
 	count := left + right
 	for left < (target+1)/2 {
 		if count == target {

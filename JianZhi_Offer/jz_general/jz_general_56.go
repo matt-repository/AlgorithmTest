@@ -46,7 +46,7 @@ func SingleNumber2(nums []int) int {
 	m := 3 //几个数相同
 	for i := 0; i < len(nums); i++ {
 		for j := 0; j < 32; j++ {
-			count[j] += nums[i] & 1
+			count[j] += nums[i] & 1 // 这里 与 “1 比"   与 ”1 10  100  1000 比“ 要性能高些
 			nums[i] >>= 1
 		}
 	}

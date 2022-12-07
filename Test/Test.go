@@ -1,52 +1,40 @@
 package Test
 
-import "fmt"
-
 func Test() {
-	fmt.Println(reversePairs([]int{7, 5, 6, 4}))
+
 }
 
-func reversePairs(nums []int) int {
-	count = 0
-	fmt.Println(mergeSort(nums, 0, len(nums)-1))
-
-	return count
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
 
-var count int
+// 二 叉树 的最近公共祖先
+func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 
-func mergeSort(nums []int, left, right int) []int {
-	if left < right {
-		mid := left + (right-left)/2
-
-		leftResult := mergeSort(nums, left, mid)
-		rightResult := mergeSort(nums, mid+1, right)
-
-		return merge(leftResult, rightResult)
-	}
-	return []int{}
-}
-
-func merge(left, right []int) []int {
-	var result []int
-
-	for len(left) > 0 && len(right) > 0 {
-		if left[0] <= right[0] {
-			result = append(result, left[0])
-			left = left[1:]
+	if isThis(root, p) && isThis(root, q) {
+		leftResult := isThis(root.Left, p) && isThis(root.Left, q)
+		rightResult := isThis(root.Left, p) && isThis(root.Left, q)
+		if !leftResult || !rightResult {
+			return root
+		} else if leftResult {
+			return lowestCommonAncestor(root.Left, p, q)
 		} else {
-			count += len(left)
-			result = append(result, right[0])
-			right = right[1:]
+			return lowestCommonAncestor(root.Right, p, q)
 		}
 	}
+	return root
+}
 
-	for len(left) > 0 {
-		result = append(result, left...)
-	}
-	for len(right) > 0 {
-		result = append(result, right...)
+func isThis(root, point *TreeNode) bool {
+
+	if root == nil {
+		return false
 	}
 
-	return result
+	if root == point {
+		return true
+	}
+	return isThis(root.Left, point) || isThis(root.Right, point)
 }
