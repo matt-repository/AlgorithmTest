@@ -14,7 +14,7 @@ func dicesProbability(n int) []float64 {
 				temp[i+j] += res[i] / 6
 			}
 		}
-		res = make([]float64, k*5+1)
+		res = make([]float64, k*5+1) // 记住 这里不是 res：=  make([]float64, k*5+1)  多了一个冒号，最后结果是res 永远都是只有6个。
 		copy(res, temp)
 	}
 	return res

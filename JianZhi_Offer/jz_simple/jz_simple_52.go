@@ -9,7 +9,7 @@ func GetIntersectionNode(headA, headB *ListNode) *ListNode {
 	p := headA
 	q := headB
 	for p != q {
-		if p == nil {
+		if p == nil { // 等于nil 再去做判断，不要 p.next！=nil  这样去判断
 			p = headB
 		} else {
 			p = p.Next

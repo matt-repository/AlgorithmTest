@@ -45,25 +45,35 @@ func MaxSlidingWindow(nums []int, k int) []int {
 //单调队列
 
 func MaxSlidingWindow1(nums []int, k int) []int {
-	q := make([]int, 0)
+	res := make([]int, 0, len(nums)-k+1)
+	queue := make([]int, 0) //存的是index
 	push := func(i int) {
-		for len(q) > 0 && nums[i] >= nums[q[len(q)-1]] { //等于也将其去掉
-			q = q[:len(q)-1]
+		for len(queue) > 0 && nums[queue[len(queue)-1]] <= nums[i] {
+			queue = queue[:len(queue)-1]
 		}
-		q = append(q, i)
+		queue = append(queue, i)
 	}
-	for i := 0; i < k; i++ {
+	for i := 0; i < k-1; i++ {
 		push(i)
 	}
-	n := len(nums)
-	ans := make([]int, 1, n-k+1) //第二个参数 len 第三个参数cap
-	ans[0] = nums[q[0]]
-	for i := k; i < n; i++ {
+	for i := k - 1; i < len(nums); i++ {
 		push(i)
-		for q[0] <= i-k {
-			q = q[1:]
+		for queue[0] < i-k+1 {
+			queue = queue[1:]
 		}
-		ans = append(ans, nums[q[0]])
+		res = append(res, nums[queue[0]])
 	}
-	return ans
+	return res
+}
+
+func dicesProbability(n int) []float64 {
+	res := make([]float64, 6*n-n+1)
+	var temp float64 = 1 / (6 * float64(n))
+
+	for i := 0; i < n; i++ {
+		for j := 0; j < 6; j++ {
+			res[i+j] += temp
+		}
+	}
+	return res
 }

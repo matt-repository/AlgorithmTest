@@ -9,7 +9,7 @@ func MergeSort(nums []int) []int {
 
 func _mergeSort(nums []int, left, right int, temp []int) {
 	if left < right {
-		mid := right + (right-left)/2
+		mid := left + (right-left)/2
 		_mergeSort(nums, left, mid, temp)
 		_mergeSort(nums, mid+1, right, temp)
 		merge(nums, left, mid, right, temp) //合并

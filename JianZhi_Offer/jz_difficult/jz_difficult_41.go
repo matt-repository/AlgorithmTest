@@ -22,7 +22,7 @@ func (h *IntHeap) Pop() interface{} {
 	old := *h
 	n := len(old)
 	value := old[n-1]
-	*h = old[:n-1]
+	*h = old[:n-1] // 这里一定得写 *h 不能写 old
 	return value
 }
 
