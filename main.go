@@ -8,9 +8,6 @@ import (
 	"AlgorithmTest/Sort"
 	"AlgorithmTest/Test"
 	"fmt"
-	"os"
-	"strconv"
-	"strings"
 	"time"
 )
 
@@ -20,7 +17,6 @@ func main() {
 
 	fmt.Println(nums)
 	jz_general.NthUglyNumber(10)
-	Test1()
 	const (
 		B = 1 << (10 * iota)
 		KiB
@@ -154,39 +150,4 @@ func main() {
 
 	fmt.Println(time.Now())
 	fmt.Println(difficult.SolveNQueens(1))
-}
-
-func Test1() {
-	SetOption(1)
-	i := 1
-	i >>= 1
-	fmt.Println(jz_general.NthUglyNumber(1))
-	sb := &strings.Builder{}
-	sb.WriteString(strconv.Itoa(1))
-	sb.WriteByte(',')
-	sb.WriteString(strconv.Itoa(2))
-	sb.WriteByte(',')
-	sb.WriteString("null,")
-	sb.WriteString(strconv.Itoa(1))
-	sb.WriteByte(',')
-	sb.WriteString(strconv.Itoa(2))
-	sb.WriteByte(',')
-	fmt.Println(sb.String())
-	strconv.Atoi("")
-}
-
-// SetOption 运行时判断类型
-func SetOption(param interface{}) {
-	test, error := os.Open("1.txt")
-	if error != nil {
-
-	}
-
-	fmt.Fprintf(test, "111")
-	switch v := param.(type) {
-	default:
-		fmt.Printf("unexpected type %T", v)
-	case uint64:
-	case string:
-	}
 }
